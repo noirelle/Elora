@@ -35,14 +35,8 @@ export function Header({
     return () => window.removeEventListener("keydown", handleEsc);
   }, []);
 
-  // Prevent scroll when sidebar is open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-  }, [isOpen]);
+  // Sidebar state is handled cleanly without body-scroll locking 
+  // to avoid the 'scrollbar jump' flicker on desktop.
 
   const ZodiacIcon = sign ? ZODIAC_ICONS[sign.toLowerCase()] : null;
 
@@ -123,7 +117,7 @@ export function Header({
           ></div>
           
           {/* High-End Sidebar Drawer (Floating Borderless Card on Desktop) */}
-          <div className="fixed top-0 right-0 h-full w-full sm:top-4 sm:right-4 sm:h-[calc(100vh-2rem)] sm:w-[380px] bg-[var(--color-background)]/95 backdrop-blur-3xl shadow-[-20px_0_80px_rgba(0,0,0,0.1)] sm:shadow-[0_30px_70px_rgba(0,0,0,0.25)] z-[101] p-0 flex flex-col sm:rounded-[3rem] animate-in slide-in-from-right duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)]">
+          <div className="fixed top-0 right-0 h-full w-full sm:top-4 sm:right-4 sm:h-[calc(100vh-2rem)] sm:w-[380px] bg-[var(--color-background)]/95 backdrop-blur-3xl shadow-[-20px_0_80px_rgba(0,0,0,0.1)] sm:shadow-[0_40px_100px_rgba(0,0,0,0.2)] z-[101] p-0 flex flex-col sm:rounded-[3rem] animate-in fade-in slide-in-from-right sm:zoom-in-95 duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] will-change-transform origin-right" style={{ backfaceVisibility: 'hidden', transformStyle: 'preserve-3d' }}>
             
             {/* Sidebar Top Nav */}
             <div className="p-8 pb-6 flex justify-between items-center bg-transparent">
