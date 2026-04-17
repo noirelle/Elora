@@ -12,6 +12,7 @@ interface HeaderProps {
   onBackToMySign?: () => void;
   onResetAccount?: () => void;
   onCancel?: () => void;
+  dailyInsight?: string;
 }
 
 export function Header({ 
@@ -22,7 +23,8 @@ export function Header({
   onExplore, 
   onBackToMySign, 
   onResetAccount,
-  onCancel
+  onCancel,
+  dailyInsight
 }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -162,48 +164,30 @@ export function Header({
                          </div>
                       </div>
                       
-                      <p className="text-xs text-[var(--color-muted)] font-light leading-relaxed opacity-80">
-                        Synthesizing celestial alignments for {sign}.
+                      <p className="text-xs text-[var(--color-muted)] font-light leading-relaxed line-clamp-4">
+                        {dailyInsight || `Your frequency is tuned to the celestial movements of ${sign}. Explore how the shift of planets today influences your path.`}
                       </p>
                    </div>
                 </div>
               </div>
 
               {/* Action Ecosystem Section */}
-              <div className="space-y-3">
-                <span className="text-[0.6rem] uppercase tracking-[0.4em] font-black text-[var(--color-muted)] opacity-40 px-1">Actions</span>
-                
-                <div className="grid grid-cols-1 gap-3">
+              <div className="space-y-4 pt-4 border-t border-[var(--color-card-border)]/40">
+                <div className="grid grid-cols-2 gap-4">
                     <button 
                       onClick={() => { setIsOpen(false); onExplore && onExplore(); }}
-                      className="w-full flex items-center justify-between p-6 rounded-3xl bg-[var(--color-card)]/80 hover:bg-[var(--color-primary)]/[0.04] shadow-md transition-all group active:scale-[0.98]"
+                      className="flex flex-col items-center justify-center p-4 rounded-3xl hover:bg-[var(--color-primary)]/5 transition-all group active:scale-95 text-center gap-2.5"
                     >
-                      <div className="flex items-center gap-5">
-                        <div className="p-3.5 rounded-2xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] transition-all group-hover:bg-[var(--color-primary)] group-hover:text-white shadow-md">
-                          <IconGridDots className="w-6 h-6" stroke={2} />
-                        </div>
-                        <div className="flex flex-col items-start text-left">
-                          <span className="text-lg font-bold tracking-tight text-[var(--color-foreground)]">Explore Signs</span>
-                          <span className="text-xs text-[var(--color-muted)] font-medium opacity-70">Browse the entire zodiac</span>
-                        </div>
-                      </div>
-                      <IconChevronRight className="w-5 h-5 opacity-0 group-hover:opacity-40 transition-all -translate-x-2 group-hover:translate-x-0" />
+                        <IconGridDots className="w-5 h-5 text-[var(--color-muted)] group-hover:text-[var(--color-primary)] opacity-40 group-hover:opacity-100 transition-all" stroke={2} />
+                        <span className="text-[0.65rem] uppercase tracking-[0.2em] font-black text-[var(--color-muted)] group-hover:text-[var(--color-foreground)] transition-colors">Explore</span>
                     </button>
                     
                     <button 
                       onClick={() => { setIsOpen(false); onResetAccount && onResetAccount(); }}
-                      className="w-full flex items-center justify-between p-6 rounded-3xl bg-[var(--color-card)]/80 hover:bg-red-500/[0.04] shadow-md transition-all group active:scale-[0.98]"
+                      className="flex flex-col items-center justify-center p-4 rounded-3xl hover:bg-[var(--color-primary)]/5 transition-all group active:scale-95 text-center gap-2.5"
                     >
-                      <div className="flex items-center gap-5">
-                        <div className="p-3.5 rounded-2xl bg-red-500/10 text-red-500 transition-all group-hover:bg-red-500 group-hover:text-white shadow-md">
-                          <IconCalendarEvent className="w-6 h-6" stroke={2} />
-                        </div>
-                        <div className="flex flex-col items-start text-left">
-                          <span className="text-lg font-bold tracking-tight text-red-600 dark:text-red-400">Update Profile</span>
-                          <span className="text-xs text-[var(--color-muted)] font-medium opacity-70">Restart your cosmic journey</span>
-                        </div>
-                      </div>
-                      <IconChevronRight className="w-5 h-5 opacity-0 group-hover:opacity-40 transition-all -translate-x-2 group-hover:translate-x-0" />
+                        <IconCalendarEvent className="w-5 h-5 text-[var(--color-muted)] group-hover:text-[var(--color-primary)] opacity-40 group-hover:opacity-100 transition-all" stroke={2} />
+                        <span className="text-[0.65rem] uppercase tracking-[0.2em] font-black text-[var(--color-muted)] group-hover:text-[var(--color-foreground)] transition-colors">Settings</span>
                     </button>
                 </div>
               </div>

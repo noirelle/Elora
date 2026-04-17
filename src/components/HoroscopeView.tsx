@@ -58,6 +58,7 @@ export function HoroscopeView({
         onExplore={onExplore}
         onBackToMySign={onBackToMySign}
         onResetAccount={onResetAccount}
+        dailyInsight={data?.daily?.data?.horoscope}
       />
 
       <div className="mb-12 flex flex-col md:flex-row items-center justify-center md:justify-start gap-6">
