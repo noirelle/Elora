@@ -26,7 +26,8 @@
   --color-card: var(--card);
   --color-card-border: var(--card-border);
   --color-card-hover: var(--card-hover);
-  --font-sans: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  --font-sans: var(--font-outfit), system-ui, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
   --font-mono: var(--font-geist-mono);
 }
 

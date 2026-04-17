@@ -4,12 +4,14 @@ import { useState, useEffect } from "react";
 import { BirthdaySelector } from "@/components/BirthdaySelector";
 import { HoroscopeView } from "@/components/HoroscopeView";
 import { SignSelector } from "@/components/SignSelector";
+import { WelcomeSplash } from "@/components/WelcomeSplash";
 
 export default function EloraApp() {
   const [mySign, setMySign] = useState<string | null>(null);
   const [activeSign, setActiveSign] = useState<string | null>(null);
   const [isExploring, setIsExploring] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [showSplash, setShowSplash] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -17,6 +19,8 @@ export default function EloraApp() {
     if (savedSign) {
       setMySign(savedSign);
       setActiveSign(savedSign);
+    } else {
+      setShowSplash(true);
     }
   }, []);
 
@@ -27,6 +31,7 @@ export default function EloraApp() {
     setMySign(null);
     setActiveSign(null);
     setIsExploring(false);
+    setShowSplash(true);
   };
 
   const handleExplore = () => {
@@ -57,10 +62,14 @@ export default function EloraApp() {
 
       <main className="flex-1 w-full flex flex-col relative z-10 pb-24 md:pb-12">
           {!mySign ? (
-            <BirthdaySelector onSignDetermined={(sign) => {
-              setMySign(sign);
-              setActiveSign(sign);
-            }} />
+            showSplash ? (
+              <WelcomeSplash onComplete={() => setShowSplash(false)} />
+            ) : (
+              <BirthdaySelector onSignDetermined={(sign) => {
+                setMySign(sign);
+                setActiveSign(sign);
+              }} />
+            )
           ) : isExploring ? (
             <SignSelector 
               onSelect={handleSelectExplore} 
