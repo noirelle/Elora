@@ -35,8 +35,17 @@ export function Header({
     return () => window.removeEventListener("keydown", handleEsc);
   }, []);
 
-  // Sidebar state is handled cleanly without body-scroll locking 
-  // to avoid the 'scrollbar jump' flicker on desktop.
+  // Prevent background scroll only on small devices
+  useEffect(() => {
+    if (isOpen && window.innerWidth < 640) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
 
   const ZodiacIcon = sign ? ZODIAC_ICONS[sign.toLowerCase()] : null;
 
