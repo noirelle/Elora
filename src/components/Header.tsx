@@ -85,35 +85,27 @@ export function Header({
                 </span>
               </button>
             ) : (
-              <div className="flex items-center gap-3 bg-[var(--color-card)]/40 p-1.5 rounded-full border border-[var(--color-card-border)] backdrop-blur-sm">
+              <div className="flex items-center gap-3">
                 <button 
                   onClick={onBackToMySign}
-                  className="flex items-center gap-2 px-5 py-2 rounded-full bg-[var(--color-primary)] text-white shadow-lg shadow-[var(--color-primary)]/20 hover:shadow-xl hover:brightness-110 transition-all group active:scale-95"
+                  className="p-1.5 rounded-full text-[var(--color-muted)] hover:text-[var(--color-primary)] transition-all active:scale-95"
+                  title="Back to my sign"
                 >
-                  <ArrowLeftIcon className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-                  <span className="text-[0.65rem] sm:text-xs uppercase tracking-[0.15em] font-bold mt-[1px]">Back home</span>
+                  <ArrowLeftIcon className="w-5 h-5 opacity-40 group-hover:opacity-100" />
                 </button>
                 <button 
                   onClick={onExplore}
                   title="Browse Signs"
-                  className="p-2 rounded-full text-[var(--color-muted)] hover:text-[var(--color-primary)] hover:bg-[var(--color-primary)]/5 transition-all text-sm active:scale-95"
+                  className="p-1.5 rounded-full text-[var(--color-muted)] hover:text-[var(--color-primary)] transition-all active:scale-95"
                 >
-                  <IconGridDots className="w-5 h-5" stroke={2} />
+                  <IconGridDots className="w-5 h-5 opacity-40 group-hover:opacity-100" stroke={2} />
                 </button>
               </div>
             )}
           </>
         )}
 
-        {mode === "selector" && (
-          <button 
-            onClick={onCancel}
-            className="group flex items-center gap-2 text-[0.65rem] sm:text-xs uppercase tracking-widest font-bold text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-all hover:translate-x-[-4px] active:scale-95 px-6 py-3 rounded-full border border-[var(--color-card-border)] bg-[var(--color-card)]/60 shadow-sm"
-          >
-            <ArrowLeftIcon className="w-4 h-4 text-[var(--color-primary)] transition-transform group-hover:-translate-x-1" />
-            <span className="mt-[1px]">Return Home</span>
-          </button>
-        )}
+        {/* mode === "selector" return logic is handled by clicking the Brand wordmark */}
       </div>
 
       {/* --- PREMIUM SIDEBAR DRAWER --- */}
