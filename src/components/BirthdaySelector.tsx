@@ -74,7 +74,7 @@ export function BirthdaySelector({ onSignDetermined }: { onSignDetermined: (sign
           <CustomSelect 
             options={MONTHS.map((m, i) => ({ value: i, label: m }))}
             value={month}
-            onChange={handleMonthChange}
+            onChange={(val) => handleMonthChange(val as number)}
           />
         </div>
 
