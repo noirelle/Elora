@@ -80,7 +80,7 @@ export function Header({
                   <IconCalendarEvent className="w-4 h-4 text-[var(--color-primary)]" stroke={2.5} />
                   <div className="absolute -top-1 -right-1 w-2 h-2 bg-[var(--color-primary)] rounded-full border-2 border-[var(--color-background)] animate-pulse"></div>
                 </div>
-                <span className="text-[0.7rem] sm:text-xs uppercase tracking-[0.2em] font-bold text-[var(--color-foreground)] opacity-90">
+                <span className="text-[0.55rem] sm:text-xs uppercase tracking-[0.2em] font-bold text-[var(--color-foreground)] opacity-90">
                   {birthDateString || "Profile"}
                 </span>
               </button>
@@ -158,7 +158,7 @@ export function Header({
                          </div>
                          <div className="flex flex-col">
                            <span className="text-2xl font-serif text-[var(--color-foreground)] capitalize tracking-tight leading-tight">{sign}</span>
-                           <span className="text-[0.65rem] font-bold text-[var(--color-primary)] opacity-80 uppercase tracking-[0.2em] mt-0.5">{birthDateString}</span>
+                           <span className="text-[0.55rem] font-bold text-[var(--color-primary)] opacity-80 uppercase tracking-[0.2em] mt-0.5">{birthDateString}</span>
                          </div>
                       </div>
                       
